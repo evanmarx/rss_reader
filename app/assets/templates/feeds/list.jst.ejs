@@ -1,0 +1,10 @@
+<div>
+<h1>Feed Yourself</h1>
+
+<% feeds.each(function (feed) { %>
+  <div>
+    <%= feed.escape("url") %>
+  </div>
+<% }); %>
+
+</div>

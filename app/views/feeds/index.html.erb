@@ -1,1 +1,10 @@
-<div>Your Feeds</div>
+<div class="feeds-list">Feeds</div>
+<script>
+  var feedsData = <%= @feeds.to_json(include: :entries).html_safe %>;
+
+  $(function () {
+    var $feedsList = $(".feeds-list");
+
+    window.NR.initialize($feedsList, feedsData);
+  });
+</script>

@@ -4,11 +4,13 @@ class FeedsController < ApplicationController
 
   def index
     if params[:user_id]
-      @user_feeds = UserFeed.where(:user_id => params[:user_id])
-      feed_ids = @user_feeds.map { |user_feed| user_feed.feed_id }
-      @feeds = Feed.find(feed_ids)
+      @user = User.find(params[:user_id])
+      @feeds = @user.feeds.includes(:entries).all
+      # @user_feeds = UserFeed.where(:user_id => params[:user_id])
+      # feed_ids = @user_feeds.map { |user_feed| user_feed.feed_id }
+      # @feeds = Feed.find(feed_ids)
     else
-      @feeds = Feed.all
+      @feeds = Feed.includes(:entries).all
     end
 
     respond_to do |format|

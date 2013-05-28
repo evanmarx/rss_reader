@@ -1,0 +1,10 @@
+<div>
+<h1>Current Stories</h1>
+
+<% entries.each(function (entry) { %>
+  <div>
+    <%= entry.escape("title") + ": " + entry.escape("link") %>
+  </div>
+<% }); %>
+
+</div>

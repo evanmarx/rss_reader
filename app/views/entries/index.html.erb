@@ -1,4 +1,8 @@
-<div>Entries for this Feed</div>
-<% @entries.each do |entry| %>
-  <%= entry.title %>
-<% end %>
+<div class="entries-list">Entries for this Feed</div>
+<script>
+  $(function () {
+    var $entriesList = $(".entries-list");
+    var entriesData = <%= @entries.to_json.html_safe %>;
+    window.NR.initialize($entriesList, entriesData);
+  });
+</script>
