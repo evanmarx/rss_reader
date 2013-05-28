@@ -12,6 +12,8 @@ class Feed < ActiveRecord::Base
   def pull
     new_entries = SimpleRSS.parse(open(self.url))
 
+    p "pull says hi"
+
     new_entries.entries.each do |entry|
       entry['feed_id'] = self.id
       Entry.create(entry)

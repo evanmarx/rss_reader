@@ -1,5 +1,7 @@
 <h1>Test</h1>
 
+<button class="refresh-feed">Refresh</button>
+
 <ul>
 <% _(feed.attributes.entries.models).each(function (model) { %>
   <li><%= model.escape("title") %></li>

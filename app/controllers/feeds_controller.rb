@@ -10,6 +10,9 @@ class FeedsController < ApplicationController
       # feed_ids = @user_feeds.map { |user_feed| user_feed.feed_id }
       # @feeds = Feed.find(feed_ids)
     else
+      p "feed controller says hi"
+      @feeds = Feed.all
+      @feeds.each { |feed| feed.pull }
       @feeds = Feed.includes(:entries).all
     end
 
